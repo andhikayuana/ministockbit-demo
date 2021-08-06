@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="grey1">#494949</color>
+
+    <color name="green_dark">#388E3C</color>
+    <color name="green">#4CAF50</color>
+
+    <color name="green_50">#e1f5ed</color>
+    <color name="green_100">#b3e6d3</color>
+    <color name="green_200">#80d5b5</color>
+    <color name="green_300">#4dc497</color>
+    <color name="green_400">#27b881</color>
+    <color name="green_500">#01ab6b</color>
+    <color name="green_600">#01a463</color>
+    <color name="green_700">#019a58</color>
+    <color name="green_800">#01914e</color>
+    <color name="green_900">#00803c</color>
+    <color name="green_A100">#adffcd</color>
+    <color name="green_A200">#7affae</color>
+    <color name="green_A400">#47ff8e</color>
+    <color name="green_A700">#2eff7f</color>
+
+
+    <color name="red_50">#ffebee</color>
+    <color name="red_100">#ffcdd2</color>
+    <color name="red_200">#ef9a9a</color>
+    <color name="red_300">#e57373</color>
+    <color name="red_400">#ef5350</color>
+    <color name="red_500">#f44336</color>
+    <color name="red_600">#e53935</color>
+    <color name="red_700">#d32f2f</color>
+    <color name="red_800">#c62828</color>
+    <color name="red_900">#b71c1c</color>
+    <color name="red_A100">#ff8a80</color>
+    <color name="red_A200">#ff5252</color>
+    <color name="red_A400">#ff1744</color>
+    <color name="red_A700">#d50000</color>
+
+
+</resources>
