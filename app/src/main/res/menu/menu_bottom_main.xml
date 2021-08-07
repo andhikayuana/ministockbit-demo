@@ -2,23 +2,28 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/menuActionWatchlist"
         android:enabled="true"
-        android:icon="@mipmap/ic_logo_google"
+        android:icon="@drawable/ic_star_outline"
         android:title="@string/label_watchlist" />
     <item
+        android:id="@+id/menuActionStream"
         android:enabled="true"
-        android:icon="@mipmap/ic_logo_google"
+        android:icon="@drawable/ic_file_outline"
         android:title="@string/label_stream" />
     <item
+        android:id="@+id/menuActionSearch"
         android:enabled="true"
-        android:icon="@mipmap/ic_logo_google"
+        android:icon="@drawable/ic_search_outline"
         android:title="@string/label_search" />
     <item
+        android:id="@+id/menuActionChat"
         android:enabled="true"
-        android:icon="@mipmap/ic_logo_google"
+        android:icon="@drawable/ic_chat_outline"
         android:title="@string/label_chat" />
     <item
+        android:id="@+id/menuActionPortfolio"
         android:enabled="true"
-        android:icon="@mipmap/ic_logo_google"
+        android:icon="@drawable/ic_pie_chart"
         android:title="@string/label_portfolio" />
 </menu>

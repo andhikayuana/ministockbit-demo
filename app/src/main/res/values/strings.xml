@@ -16,4 +16,6 @@
     <string name="label_search">Search</string>
     <string name="label_chat">Chat</string>
     <string name="label_portfolio">Portfolio</string>
+    <string name="label_logout">Logout</string>
+    <string name="label_or">Or</string>
 </resources>

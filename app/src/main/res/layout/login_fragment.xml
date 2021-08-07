@@ -9,13 +9,13 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:elevation="0dp">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/white"
-            android:elevation="0dp"
             app:menu="@menu/menu_login"
             app:navigationIcon="@drawable/ic_arrow_back"
             app:navigationIconTint="@color/grey1">
@@ -63,11 +63,12 @@
                 app:icon="@mipmap/ic_logo_facebook"
                 app:iconTint="@null" />
 
+            <include layout="@layout/login_divider" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:hint="@string/label_username_or_email">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -101,8 +102,6 @@
                 android:id="@+id/tvForgotPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="true"
                 android:gravity="end"
                 android:paddingVertical="20dp"
                 android:text="@string/label_forgot_password"
