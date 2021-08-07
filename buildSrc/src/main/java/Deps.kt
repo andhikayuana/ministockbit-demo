@@ -22,6 +22,8 @@ object Deps {
     const val room = "androidx.room:room-runtime:${Versions.room}"
     const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
     const val roomExt = "androidx.room:room-ktx:${Versions.room}"
+    const val swipeRefresh =
+        "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swipeRefresh}"
 
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
@@ -65,6 +67,7 @@ object Versions {
     const val hilt = "2.35"
     const val hiltWork = "1.0.0"
     const val room = "2.3.0"
+    const val swipeRefresh = "1.0.0"
 
     const val retrofit = "2.9.0"
     const val okhttp = "4.9.0"

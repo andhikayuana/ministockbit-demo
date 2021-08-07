@@ -18,4 +18,6 @@
     <string name="label_portfolio">Portfolio</string>
     <string name="label_logout">Logout</string>
     <string name="label_or">Or</string>
+    <string name="label_bitcoin_code">BTC</string>
+    <string name="label_bitcoin_fullname">Bitcoin</string>
 </resources>

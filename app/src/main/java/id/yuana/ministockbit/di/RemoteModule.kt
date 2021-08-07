@@ -6,8 +6,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import id.yuana.ministockbit.BuildConfig
 import id.yuana.ministockbit.data.api.CryptoCompareApi
-import id.yuana.ministockbit.data.local.Cache
-import id.yuana.ministockbit.data.repository.AccountRepository
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -16,7 +14,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AppModule {
+object RemoteModule {
 
     @Singleton
     @Provides
@@ -45,7 +43,4 @@ object AppModule {
     fun provideCryptoCompareApi(retrofit: Retrofit) = retrofit.create(CryptoCompareApi::class.java)
 
 
-    @Provides
-    @Singleton
-    fun provideAccountRepository(cache: Cache) = AccountRepository(cache)
 }

@@ -10,6 +10,14 @@
     <string name="label_action_blah">Action Bla Blah</string>
     <string name="label_register_now">Daftar sekarang</string>
     <string name="label_dont_have_an_account_yet">Belum punya akun? Daftar sekarang</string>
+    <string name="label_loading">Memuat...</string>
+    <string name="label_watchlist">Watchlist</string>
+    <string name="label_stream">Stream</string>
+    <string name="label_search">Search</string>
+    <string name="label_chat">Chat</string>
+    <string name="label_portfolio">Portfolio</string>
     <string name="label_logout">Keluar</string>
     <string name="label_or">Atau</string>
+    <string name="label_bitcoin_code">BTC</string>
+    <string name="label_bitcoin_fullname">Bitcoin</string>
 </resources>

@@ -57,6 +57,9 @@ dependencies {
     implementation(Deps.viewmodel)
     implementation(Deps.navigationFragment)
     implementation(Deps.navigationUI)
+    implementation(Deps.recyclerView)
+    implementation(Deps.swipeRefresh)
+
     implementation(Deps.hiltAndroid)
     kapt(Deps.hiltCompiler)
 
