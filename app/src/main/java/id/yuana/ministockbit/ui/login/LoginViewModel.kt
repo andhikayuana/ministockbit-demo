@@ -15,9 +15,6 @@ class LoginViewModel @Inject constructor(
     private val accountRepository: AccountRepository
 ) : ViewModel() {
 
-    val inputUsername: String = ""
-    val inputPassword: String = ""
-
     val state: MutableLiveData<Resource<Account>> by lazy {
         MutableLiveData<Resource<Account>>(Resource.idle())
     }
