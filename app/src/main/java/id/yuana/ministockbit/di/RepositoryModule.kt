@@ -17,13 +17,15 @@ object RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideAccountRepository(cache: Cache) = AccountRepository(cache)
+    fun provideAccountRepository(
+        cache: Cache,
+        database: MiniStockbitDatabase
+    ) = AccountRepository(cache, database)
 
     @Provides
     @Singleton
     fun provideMiniStockbitRepository(
         cryptoCompareApi: CryptoCompareApi,
         database: MiniStockbitDatabase
-    ) =
-        MiniStockbitRepository(cryptoCompareApi, database)
+    ) = MiniStockbitRepository(cryptoCompareApi, database)
 }

@@ -40,7 +40,8 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                     swipeRefresh.isRefreshing = true
                 }
                 Resource.Status.ERROR -> {
-
+                    swipeRefresh.isRefreshing = false
+                    //todo error state here
                 }
                 Resource.Status.SUCCESS -> {
                     swipeRefresh.isRefreshing = false

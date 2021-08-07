@@ -1,6 +1,7 @@
 package id.yuana.ministockbit.data.repository
 
 import id.yuana.ministockbit.data.local.Cache
+import id.yuana.ministockbit.data.local.MiniStockbitDatabase
 import id.yuana.ministockbit.data.model.Account
 import id.yuana.ministockbit.util.Resource
 import kotlinx.coroutines.Dispatchers
@@ -9,7 +10,8 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class AccountRepository @Inject constructor(
-    private val cache: Cache
+    private val cache: Cache,
+    private val db: MiniStockbitDatabase
 ) {
 
     fun isLoggedOn(): Boolean = cache.isLoggedOn()
@@ -40,6 +42,7 @@ class AccountRepository @Inject constructor(
     suspend fun logout() {
         return withContext(Dispatchers.IO) {
             cache.clear()
+            db.clearAllTables()
         }
     }
 }
