@@ -5,22 +5,6 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/splashFragment">
     <fragment
-        android:id="@+id/loginFragment"
-        android:name="id.yuana.ministockbit.ui.login.LoginFragment"
-        android:label="login_fragment"
-        tools:layout="@layout/login_fragment">
-        <action
-            android:id="@+id/action_loginFragment2_to_mainFragment"
-            app:destination="@id/mainFragment"
-            app:popUpTo="@id/loginFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
-    <fragment
-        android:id="@+id/mainFragment"
-        android:name="id.yuana.ministockbit.ui.main.MainFragment"
-        android:label="main_fragment"
-        tools:layout="@layout/main_fragment" />
-    <fragment
         android:id="@+id/splashFragment"
         android:name="id.yuana.ministockbit.ui.splash.SplashFragment"
         android:label="SplashFragment"
@@ -28,6 +12,8 @@
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
         <action
@@ -36,4 +22,27 @@
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="id.yuana.ministockbit.ui.login.LoginFragment"
+        android:label="login_fragment"
+        tools:layout="@layout/login_fragment">
+        <action
+            android:id="@+id/action_loginFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="id.yuana.ministockbit.ui.main.MainFragment"
+        android:label="main_fragment"
+        tools:layout="@layout/main_fragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
 </navigation>

@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.login_fragment.*
 @AndroidEntryPoint
 class LoginFragment : Fragment(R.layout.login_fragment) {
 
-    private val viewModel: LoginViewModel by activityViewModels()
+    private val viewModel by viewModels<LoginViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,7 +36,7 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
                 Resource.Status.SUCCESS -> {
                     btnLogin.text = getString(R.string.label_login)
                     toggleComponent(true)
-                    findNavController().navigate(R.id.action_loginFragment2_to_mainFragment)
+                    findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
                 }
                 Resource.Status.ERROR -> {
                     btnLogin.text = getString(R.string.label_login)
@@ -56,6 +56,8 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
         tvForgotPassword.isEnabled = enabled
         tvRegisterNow.isEnabled = enabled
         btnLogin.isEnabled = enabled
+        tieEmail.isEnabled = enabled
+        tiePassword.isEnabled = enabled
     }
 
     private fun initView() {

@@ -19,7 +19,7 @@ class LoginViewModel @Inject constructor(
     val inputPassword: String = ""
 
     val state: MutableLiveData<Resource<Account>> by lazy {
-        MutableLiveData<Resource<Account>>(Resource.success(Account.createPlaceholder()))
+        MutableLiveData<Resource<Account>>(Resource.idle())
     }
 
     fun onLoginClicked(email: String, password: String) {
