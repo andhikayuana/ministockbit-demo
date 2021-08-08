@@ -19,7 +19,7 @@ class Cache @Inject constructor(@ApplicationContext context: Context) {
 
     private val pref = context.getSharedPreferences(CACHE_NAME, Context.MODE_PRIVATE)
 
-    fun putLoginStatus(isLoggedOn: Boolean) {
+    fun putLoginStatus(isLoggedOn: Boolean): Unit {
         pref.edit {
             putBoolean(CACHE_IS_LOGGED_ON, isLoggedOn)
         }
@@ -27,7 +27,7 @@ class Cache @Inject constructor(@ApplicationContext context: Context) {
 
     fun isLoggedOn(): Boolean = pref.getBoolean(CACHE_IS_LOGGED_ON, false)
 
-    fun putAccount(account: Account) {
+    fun putAccount(account: Account): Unit {
         pref.edit {
             putString(CACHE_ACCOUNT, Gson().toJson(account))
         }
