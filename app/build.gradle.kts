@@ -72,6 +72,11 @@ dependencies {
     implementation(Deps.okhttp)
     implementation(Deps.okhttpLogging)
 
+    testImplementation(Deps.mockWebserer)
+    testImplementation(Deps.mockk)
+    testImplementation(Deps.coroutinesTest)
+    testImplementation(Deps.androidCoreTest)
+
     testImplementation(Deps.junit)
     androidTestImplementation(Deps.junitExt)
     androidTestImplementation(Deps.espresso)

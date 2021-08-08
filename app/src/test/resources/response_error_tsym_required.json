@@ -1,0 +1,9 @@
+{
+  "Response": "Error",
+  "Message": "tsym is a required param.",
+  "HasWarning": false,
+  "Type": 2,
+  "RateLimit": {},
+  "Data": {},
+  "ParamWithError": "tsym"
+}
