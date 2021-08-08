@@ -5,13 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import id.yuana.ministockbit.R
-import id.yuana.ministockbit.data.api.response.CoinItem
+import id.yuana.ministockbit.data.model.CoinItemModel
 import kotlinx.android.synthetic.main.item_watchlist.view.*
-import java.util.*
 
 class WatchlistAdapter : RecyclerView.Adapter<WatchlistAdapter.ViewHolder>() {
 
-    val data: MutableList<CoinItem> = mutableListOf()
+    val data: MutableList<CoinItemModel> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -25,34 +24,34 @@ class WatchlistAdapter : RecyclerView.Adapter<WatchlistAdapter.ViewHolder>() {
 
     override fun getItemCount(): Int = data.size
 
-    fun replaceData(items: List<CoinItem>) {
+    fun replaceData(items: List<CoinItemModel>) {
         data.clear()
         add(items)
     }
 
-    fun add(item: CoinItem) {
+    fun add(item: CoinItemModel) {
         data.add(item)
         notifyItemInserted(data.size - 1)
     }
 
-    fun add(item: CoinItem, position: Int) {
+    fun add(item: CoinItemModel, position: Int) {
         data.add(position, item)
         notifyItemInserted(position)
     }
 
-    open fun add(items: List<CoinItem>) {
+    open fun add(items: List<CoinItemModel>) {
         for (item in items) {
             data.add(item)
         }
         notifyDataSetChanged()
     }
 
-    fun add(items: Array<CoinItem>) {
+    fun add(items: Array<CoinItemModel>) {
         add(listOf(*items))
         notifyDataSetChanged()
     }
 
-    fun addOrUpdate(item: CoinItem) {
+    fun addOrUpdate(item: CoinItemModel) {
         val i = data.indexOf(item)
         if (i >= 0) {
             data[i] = item
@@ -62,7 +61,7 @@ class WatchlistAdapter : RecyclerView.Adapter<WatchlistAdapter.ViewHolder>() {
         }
     }
 
-    fun addOrUpdate(items: List<CoinItem>) {
+    fun addOrUpdate(items: List<CoinItemModel>) {
         for (item in items) {
             addOrUpdate(item)
         }
@@ -76,7 +75,7 @@ class WatchlistAdapter : RecyclerView.Adapter<WatchlistAdapter.ViewHolder>() {
         }
     }
 
-    fun remove(item: CoinItem) {
+    fun remove(item: CoinItemModel) {
         val position = data.indexOf(item)
         remove(position)
     }
@@ -89,12 +88,12 @@ class WatchlistAdapter : RecyclerView.Adapter<WatchlistAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(item: CoinItem) {
+        fun bind(item: CoinItemModel) {
             with(itemView) {
-                tvName.text = item.coinInfo.name
-                tvFullname.text = item.coinInfo.fullName
+                tvName.text = item.name
+                tvFullname.text = item.fullName
                 tvPrice.text = item.display?.usd?.get("PRICE")?.asString ?: "N/A"
-                tvChangeHour.text = item.display?.usd?.get("VOLUMEDAY")?.asString ?: "N/A"
+                tvChangeHour.text = item.display?.usd?.get("CHANGEPCTHOUR")?.asString ?: "N/A"
             }
         }
 

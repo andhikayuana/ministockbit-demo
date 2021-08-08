@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import id.yuana.ministockbit.R
 import id.yuana.ministockbit.ui.main.watchlist.WatchlistAdapter
@@ -38,10 +39,20 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             when (res.status) {
                 Resource.Status.LOADING -> {
                     swipeRefresh.isRefreshing = true
+                    res.data?.let { watchlistAdapter.addOrUpdate(it) }
                 }
                 Resource.Status.ERROR -> {
                     swipeRefresh.isRefreshing = false
-                    //todo error state here
+                    res.throwable?.message?.let {
+                        Snackbar.make(coordinatorMain, it, Snackbar.LENGTH_INDEFINITE)
+                            .setAnchorView(bottomNavigation)
+                            .setAction(R.string.label_tryagain) {
+                                viewModel.fetchWatchlist()
+                            }
+                            .show()
+                    }
+
+
                 }
                 Resource.Status.SUCCESS -> {
                     swipeRefresh.isRefreshing = false
