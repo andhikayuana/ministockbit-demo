@@ -1,14 +1,16 @@
 package id.yuana.ministockbit.ui.main.watchlist
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import id.yuana.ministockbit.R
 import id.yuana.ministockbit.data.model.CoinItemModel
 import kotlinx.android.synthetic.main.item_watchlist.view.*
 
-class WatchlistAdapter : RecyclerView.Adapter<WatchlistAdapter.ViewHolder>() {
+class WatchlistAdapter(context: Context) : RecyclerView.Adapter<WatchlistAdapter.ViewHolder>() {
 
     val data: MutableList<CoinItemModel> = mutableListOf()
 
@@ -92,8 +94,17 @@ class WatchlistAdapter : RecyclerView.Adapter<WatchlistAdapter.ViewHolder>() {
             with(itemView) {
                 tvName.text = item.name
                 tvFullname.text = item.fullName
-                tvPrice.text = item.display?.usd?.get("PRICE")?.asString ?: "N/A"
-                tvChangeHour.text = item.display?.usd?.get("CHANGEPCTHOUR")?.asString ?: "N/A"
+                tvPrice.text = item.display?.getPrice() ?: "N/A"
+                tvChangeHour.text =
+                    " ${item.display?.getChangeHour()} (${item.display?.getChangePctHour()})"
+                        ?: "N/A"
+                item.raw?.let {
+                    if (it.isChangeHourIncrease()) {
+                        tvChangeHour.setTextColor(ContextCompat.getColor(context, R.color.green_400))
+                    } else if (it.isChangeHourDecrease()) {
+                        tvChangeHour.setTextColor(ContextCompat.getColor(context, R.color.red_400))
+                    }
+                }
             }
         }
 

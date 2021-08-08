@@ -86,7 +86,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             isVisible = true
             backgroundColor = ContextCompat.getColor(requireContext(), R.color.green_600)
         }
-        watchlistAdapter = WatchlistAdapter()
+        watchlistAdapter = WatchlistAdapter(requireContext())
         recyclerWatchlist.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = watchlistAdapter
