@@ -43,4 +43,5 @@ object RemoteModule {
     fun provideCryptoCompareApi(retrofit: Retrofit) = retrofit.create(CryptoCompareApi::class.java)
 
 
+    //TODO: websocket client using scarlet
 }

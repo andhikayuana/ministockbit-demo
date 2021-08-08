@@ -71,6 +71,7 @@ dependencies {
     implementation(Deps.retrofitGsonConverter)
     implementation(Deps.okhttp)
     implementation(Deps.okhttpLogging)
+    implementation(Deps.scarlet)
 
     testImplementation(Deps.mockWebserer)
     testImplementation(Deps.mockk)

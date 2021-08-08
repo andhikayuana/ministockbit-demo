@@ -29,6 +29,7 @@ object Deps {
     const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     const val okhttp = "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
     const val okhttpLogging = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}"
+    const val scarlet = "com.tinder.scarlet:scarlet:${Versions.scarlet}"
 
 
     //test
@@ -71,6 +72,7 @@ object Versions {
 
     const val retrofit = "2.9.0"
     const val okhttp = "4.9.0"
+    const val scarlet = "0.1.12"
 
     const val googleTruth = "1.1.2"
     const val mockito = "3.8.0"
