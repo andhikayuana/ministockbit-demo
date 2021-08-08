@@ -12,6 +12,13 @@
 - after finish resolved dependencies and indexing, you may want to change `apiKey` inside `gradle.properties` file
 - click run
 
+## How to Login
+- please use below credentials to login 
+```
+email:      jarjit@spam4.me
+password:   jarjit123!@#
+```
+
 ## Screenshots
 
 | SplashScreen | LoginScreen | MainScreen |
