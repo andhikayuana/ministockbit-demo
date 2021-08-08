@@ -15,12 +15,13 @@ class SplashViewModel @Inject constructor(
 ) : ViewModel() {
 
     companion object {
+        const val IDLE = 0
         const val GOTO_LOGIN = 1
         const val GOTO_MAIN = 2
     }
 
     val next: MutableLiveData<Int> by lazy {
-        MutableLiveData<Int>(0)
+        MutableLiveData<Int>(IDLE)
     }
 
     init {
