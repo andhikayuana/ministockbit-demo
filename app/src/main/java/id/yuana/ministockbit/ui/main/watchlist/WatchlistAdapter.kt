@@ -24,21 +24,21 @@ class WatchlistAdapter(context: Context) : RecyclerView.Adapter<WatchlistAdapter
                     val first = o1?.raw?.usd?.get("LASTUPDATE")?.asLong ?: 0
                     val second = o2?.raw?.usd?.get("LASTUPDATE")?.asLong ?: 0
 
-                    return first.compareTo(second)
+                    return second.compareTo(first)
                 }
 
                 override fun areContentsTheSame(
                     oldItem: CoinItemModel?,
                     newItem: CoinItemModel?
                 ): Boolean {
-                    return oldItem?.equals(newItem) ?: false
+                    return newItem?.equals(oldItem) ?: false
                 }
 
                 override fun areItemsTheSame(
                     item1: CoinItemModel?,
                     item2: CoinItemModel?
                 ): Boolean {
-                    return item1?.id.equals(item2?.id)
+                    return item2?.id.equals(item1?.id)
                 }
 
             })
