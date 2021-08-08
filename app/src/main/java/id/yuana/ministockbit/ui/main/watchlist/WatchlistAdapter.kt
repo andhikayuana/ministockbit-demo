@@ -1,18 +1,47 @@
 package id.yuana.ministockbit.ui.main.watchlist
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.SortedList
+import androidx.recyclerview.widget.SortedListAdapterCallback
 import id.yuana.ministockbit.R
 import id.yuana.ministockbit.data.model.CoinItemModel
 import kotlinx.android.synthetic.main.item_watchlist.view.*
 
 class WatchlistAdapter(context: Context) : RecyclerView.Adapter<WatchlistAdapter.ViewHolder>() {
 
-    val data: MutableList<CoinItemModel> = mutableListOf()
+    var data: SortedList<CoinItemModel> =
+        SortedList(
+            CoinItemModel::class.java,
+            object : SortedListAdapterCallback<CoinItemModel>(this) {
+
+                override fun compare(o1: CoinItemModel?, o2: CoinItemModel?): Int {
+                    val first = o1?.raw?.usd?.get("LASTUPDATE")?.asLong ?: 0
+                    val second = o2?.raw?.usd?.get("LASTUPDATE")?.asLong ?: 0
+
+                    return first.compareTo(second)
+                }
+
+                override fun areContentsTheSame(
+                    oldItem: CoinItemModel?,
+                    newItem: CoinItemModel?
+                ): Boolean {
+                    return oldItem?.equals(newItem) ?: false
+                }
+
+                override fun areItemsTheSame(
+                    item1: CoinItemModel?,
+                    item2: CoinItemModel?
+                ): Boolean {
+                    return item1?.id.equals(item2?.id)
+                }
+
+            })
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -24,27 +53,25 @@ class WatchlistAdapter(context: Context) : RecyclerView.Adapter<WatchlistAdapter
         holder.bind(data[position])
     }
 
-    override fun getItemCount(): Int = data.size
+    override fun getItemCount(): Int = data.size()
 
-    fun replaceData(items: List<CoinItemModel>) {
-        data.clear()
-        add(items)
-    }
 
     fun add(item: CoinItemModel) {
         data.add(item)
-        notifyItemInserted(data.size - 1)
+        notifyItemInserted(data.size() - 1)
     }
 
     fun add(item: CoinItemModel, position: Int) {
-        data.add(position, item)
+        data.updateItemAt(position, item)
         notifyItemInserted(position)
     }
 
-    open fun add(items: List<CoinItemModel>) {
+    fun add(items: List<CoinItemModel>) {
+        data.beginBatchedUpdates()
         for (item in items) {
             data.add(item)
         }
+        data.endBatchedUpdates()
         notifyDataSetChanged()
     }
 
@@ -56,7 +83,7 @@ class WatchlistAdapter(context: Context) : RecyclerView.Adapter<WatchlistAdapter
     fun addOrUpdate(item: CoinItemModel) {
         val i = data.indexOf(item)
         if (i >= 0) {
-            data[i] = item
+            data.updateItemAt(i, item)
             notifyItemChanged(i)
         } else {
             add(item)
@@ -64,15 +91,17 @@ class WatchlistAdapter(context: Context) : RecyclerView.Adapter<WatchlistAdapter
     }
 
     fun addOrUpdate(items: List<CoinItemModel>) {
+        data.beginBatchedUpdates()
         for (item in items) {
             addOrUpdate(item)
         }
+        data.endBatchedUpdates()
         notifyDataSetChanged()
     }
 
     fun remove(position: Int) {
-        if (position >= 0 && position < data.size) {
-            data.removeAt(position)
+        if (position >= 0 && position < data.size()) {
+            data.removeItemAt(position)
             notifyItemRemoved(position)
         }
     }
@@ -90,17 +119,22 @@ class WatchlistAdapter(context: Context) : RecyclerView.Adapter<WatchlistAdapter
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        @SuppressLint("SetTextI18n")
         fun bind(item: CoinItemModel) {
             with(itemView) {
                 tvName.text = item.name
                 tvFullname.text = item.fullName
                 tvPrice.text = item.display?.getPrice() ?: "N/A"
                 tvChangeHour.text =
-                    " ${item.display?.getChangeHour()} (${item.display?.getChangePctHour()})"
-                        ?: "N/A"
+                    " ${item.display?.getChangeHour() ?: "N/A"} (${item.display?.getChangePctHour() ?: "N/A"})"
                 item.raw?.let {
                     if (it.isChangeHourIncrease()) {
-                        tvChangeHour.setTextColor(ContextCompat.getColor(context, R.color.green_400))
+                        tvChangeHour.setTextColor(
+                            ContextCompat.getColor(
+                                context,
+                                R.color.green_400
+                            )
+                        )
                     } else if (it.isChangeHourDecrease()) {
                         tvChangeHour.setTextColor(ContextCompat.getColor(context, R.color.red_400))
                     }
