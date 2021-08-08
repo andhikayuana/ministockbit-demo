@@ -21,4 +21,6 @@
     <string name="label_bitcoin_code">BTC</string>
     <string name="label_bitcoin_fullname">Bitcoin</string>
     <string name="label_tryagain">Coba lagi</string>
+    <string name="label_all_watchlist">Semua Watchlist</string>
+    <string name="label_add_symbol">Add Symbol</string>
 </resources>

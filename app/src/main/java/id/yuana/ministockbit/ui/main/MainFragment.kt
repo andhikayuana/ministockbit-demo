@@ -25,6 +25,8 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+//        just watchlist view, no need implement viewpager for other menus
+
         initView()
         initObserver()
     }
@@ -55,6 +57,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
                 }
                 Resource.Status.SUCCESS -> {
+                    //todo check zero data or no for empty state
                     swipeRefresh.isRefreshing = false
                     res.data?.let { watchlistAdapter.addOrUpdate(it) }
                 }
