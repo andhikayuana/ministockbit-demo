@@ -17,7 +17,7 @@ class MainViewModel @Inject constructor(
         MutableLiveData<Boolean>(false)
     }
 
-    private val refreshTrigger = MutableLiveData(false)
+    val refreshTrigger = MutableLiveData(false)
 
     val watchlistState = Transformations.switchMap(refreshTrigger) {
         miniStockbitRepository.getWatchlist().asLiveData()
